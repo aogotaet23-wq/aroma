@@ -1,19 +1,263 @@
-<section class="application-section" aria-labelledby="application-title">
-  <h2 id="application-title" class="application-title">
-    お申し込み
-  </h2>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>空間芳香事業資料</title>
+  <link rel="icon" href="./favicon.ico">
 
-  <p class="application-text">
-    お申し込みは、下記の専用フォームよりお願いいたします。
-  </p>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-  <a
-    href="https://docs.google.com/forms/d/e/1FAIpQLScZBpi47XA-u14CVo15oOiyWwXYlh8CsSJgMUkog3p0cdVxkQ/viewform"
-    target="_blank"
-    rel="noopener noreferrer"
-    class="promo-btn application-btn"
-    aria-label="お申し込みフォームへ（新しいタブで開きます）"
-  >
-    お申し込みフォームへ
-  </a>
-</section>
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      color: #fff;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.28), transparent 34%),
+        linear-gradient(135deg, #d8d2c7 0%, #c9c1b4 100%);
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .18;
+      background-image:
+        repeating-radial-gradient(
+          circle at 0 0,
+          rgba(255,255,255,.35) 0 1px,
+          transparent 1px 4px
+        );
+      mix-blend-mode: overlay;
+      z-index: 0;
+    }
+
+    .promo-page {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .promo-card {
+      width: 100%;
+      max-width: 640px;
+      padding: 56px 40px;
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255,255,255,.12), transparent 40%),
+        radial-gradient(circle at 80% 100%, rgba(255,255,255,.06), transparent 50%),
+        linear-gradient(160deg, #0f1c2e 0%, #13233a 50%, #0c1626 100%);
+      text-align: center;
+      box-shadow: 0 24px 80px rgba(0,0,0,.25);
+    }
+
+    .logo {
+      width: 120px;
+      height: auto;
+      margin: 0 auto 28px;
+      display: block;
+    }
+
+    .label {
+      margin: 0 0 20px;
+      font-size: 12px;
+      letter-spacing: .18em;
+      color: rgba(255,255,255,.62);
+    }
+
+    .text {
+      margin: 28px 0 36px;
+      color: rgba(255,255,255,.82);
+      line-height: 1.8;
+    }
+
+    .promo-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      min-width: 220px;
+      max-width: 100%;
+      padding: 15px 30px;
+      border-radius: 999px;
+      border: 1px solid #fff;
+      background: transparent;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      letter-spacing: .08em;
+      transition: .25s ease;
+    }
+
+    .promo-btn::after {
+      content: "→";
+      font-size: 22px;
+      line-height: 1;
+      transition: .25s ease;
+    }
+
+    .promo-btn:hover {
+      background: #fff;
+      color: #0f1c2e;
+      transform: translateY(-2px);
+    }
+
+    .promo-btn:hover::after {
+      transform: translateX(4px);
+    }
+
+    .promo-btn:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 5px;
+    }
+
+    /* お申し込みエリア */
+    .application-section {
+      margin-top: 44px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,.22);
+    }
+
+    .application-title {
+      margin: 0 0 12px;
+      font-size: 20px;
+      letter-spacing: .08em;
+    }
+
+    .application-text {
+      margin: 0 0 24px;
+      color: rgba(255,255,255,.82);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* PDFボタンと区別するゴールドのボタン */
+    .promo-btn.application-btn {
+      min-width: 0;
+      width: 100%;
+      max-width: 320px;
+      padding: 16px 20px;
+      background: #d8bd83;
+      border-color: #d8bd83;
+      color: #0f1c2e;
+      letter-spacing: .04em;
+    }
+
+    .promo-btn.application-btn:hover {
+      background: #ead4a6;
+      border-color: #ead4a6;
+      color: #0f1c2e;
+    }
+
+    @media screen and (max-width: 767px) {
+      .promo-page {
+        padding: 20px;
+      }
+
+      .promo-card {
+        width: 100%;
+        padding: 44px 24px;
+        border-radius: 20px;
+      }
+
+      .logo {
+        width: 96px;
+        margin-bottom: 24px;
+      }
+
+      .label {
+        font-size: 10px;
+        letter-spacing: .16em;
+      }
+
+      .text {
+        margin: 24px 0 32px;
+        font-size: 14px;
+      }
+
+      .promo-btn {
+        min-width: 0;
+        width: 100%;
+        max-width: 240px;
+        margin: auto;
+      }
+
+      .application-section {
+        margin-top: 36px;
+        padding-top: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="promo-page">
+    <div class="promo-card">
+
+      <img src="./logo.png" alt="Lohb" class="logo">
+
+      <p class="label">
+        Lohb 空間芳香事業 Promotional Material
+      </p>
+
+      <p class="text">
+        空間芳香＿FLOW２に関する資料はこちらからご確認ください。
+      </p>
+
+      <a
+        href="./Lohb＿空間芳香事業.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="promo-btn"
+      >
+        View PDF
+      </a>
+
+      <p class="text">
+        空間芳香＿CLEARに関する資料はこちらからご確認ください。
+      </p>
+
+      <a
+        href="./空間芳香レンタル_clear.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="promo-btn"
+      >
+        View PDF
+      </a>
+
+      <section
+        class="application-section"
+        aria-labelledby="application-title"
+      >
+        <h2 id="application-title" class="application-title">
+          お申し込み
+        </h2>
+
+        <p class="application-text">
+          お申し込みは、下記の専用フォームよりお願いいたします。
+        </p>
+
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLScZBpi47XA-u14CVo15oOiyWwXYlh8CsSJgMUkog3p0cdVxkQ/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="promo-btn application-btn"
+          aria-label="お申し込みフォームへ（新しいタブで開きます）"
+        >
+          お申し込みフォームへ
+        </a>
+      </section>
+
+    </div>
+  </div>
+</body>
+</html>
